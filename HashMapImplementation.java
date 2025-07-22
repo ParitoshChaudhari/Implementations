@@ -62,7 +62,7 @@ class HashMapImplementation {
             // assigning values to new bucket
             for (int i = 0; i < oldBucket.length; i++) {
                 LinkedList<Node> ll = oldBucket[i];
-                for (int j = 0; j < ll.size(); i++) {
+                for (int j = 0; j < ll.size(); j++) {
                     Node node = ll.get(j);
                     put(node.key, node.value);
                 }
