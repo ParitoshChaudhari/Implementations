@@ -124,6 +124,41 @@ public class LinkedListImplementation {
         public int length(){
             return size;
         }
+
+
+        // reverse ll
+        public void reverseIterate(){
+            if(head == null || head.next == null){
+                // case in which ll is empty or only have 1 element
+                return;
+            }
+
+            Node previousNode = head;
+            Node currentNode = head.next;
+            while(currentNode != null){
+                Node nextNode = currentNode.next;
+
+                currentNode.next = previousNode;
+                //update
+                previousNode = currentNode;
+                currentNode = nextNode;
+            }
+
+            head.next = null;
+            head = previousNode;
+        }
+
+        public Node reverseRecursive(Node head){
+            if(head == null || head.next == null){
+                return head;
+            }
+
+            Node newHead = reverseRecursive(head.next);
+            head.next.next = head;
+            head.next = null;
+
+            return newHead;
+        }
     }
 
 
@@ -149,5 +184,21 @@ public class LinkedListImplementation {
         ll.deleteLast();
         ll.printList();
         System.out.println(ll.length());
+        ll.deleteFirst();
+
+
+
+        System.out.println("-------");
+        ll.addLast("1");
+        ll.addLast("2");
+        ll.addLast("3");
+        ll.addLast("4");
+        ll.printList();
+        
+        System.out.println("Reverse ll");
+        // ll.reverseIterate();
+        ll.head = ll.reverseRecursive(ll.head);
+        ll.printList();
+        
     }
 }
